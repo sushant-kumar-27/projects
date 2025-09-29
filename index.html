@@ -9,49 +9,71 @@
   <style>
     :root{
       --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#38bdf8; --glass: rgba(255,255,255,0.04);
-      --radius:12px; --maxw:1100px; font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      --radius:16px; --maxw:1100px; font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071029 0%,#071020 60%);color:#e6eef6}
-    .wrap{max-width:var(--maxw);margin:40px auto;padding:28px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071029 0%,#071020 60%);color:#e6eef6;font-size:16px;line-height:1.5}
+
+    .wrap{max-width:var(--maxw);margin:32px auto;padding:20px}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-bottom:16px;flex-wrap:wrap}
     .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:54px;height:54px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:grid;place-items:center;font-weight:800;color:#012;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
-    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600}
-    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center;margin-top:28px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:26px;border-radius:var(--radius);backdrop-filter: blur(6px);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
-    .intro h1{margin:0 0 8px 0;font-size:28px;line-height:1.05}
-    .intro p{color:var(--muted);margin:0 0 16px}
-    .cta{display:flex;gap:12px}
-    .btn{padding:10px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
+    .logo{width:50px;height:50px;border-radius:16px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:grid;place-items:center;font-weight:800;color:#012;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    nav a{color:var(--muted);text-decoration:none;margin-left:16px;font-weight:600;transition:color 0.2s;font-size:15px}
+    nav a:hover{color:var(--accent)}
+
+    .hero{display:grid;grid-template-columns:1fr 300px;gap:32px;align-items:center;margin-top:32px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));padding:24px;border-radius:var(--radius);backdrop-filter: blur(8px);box-shadow:0 6px 20px rgba(2,6,23,0.4)}
+    .intro{text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+    .intro h1{margin:0;font-size:28px;line-height:1.2}
+    .intro p{color:var(--muted);margin:0;font-size:15px}
+
+    .cta{display:flex;gap:12px;margin-top:8px;flex-wrap:wrap;justify-content:center}
+    .btn{padding:10px 16px;border-radius:12px;border:0;font-weight:700;cursor:pointer;font-size:15px;transition:background 0.2s, color 0.2s;min-width:120px;text-align:center}
     .btn-primary{background:linear-gradient(90deg,var(--accent),#7c3aed);color:#012}
-    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
-    .photo{border-radius:14px;overflow:hidden;box-shadow:0 18px 40px rgba(2,6,23,0.7)}
-    .photo img{display:block;width:100%;height:100%;object-fit:cover}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
-    .project{padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.014), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.025)}
-    .project h3{margin:6px 0 8px;font-size:16px}
+    .btn-primary:hover{background:linear-gradient(90deg,#7c3aed,var(--accent));color:#fff}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.08);color:var(--muted)}
+    .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+    .photo{border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(2,6,23,0.6);max-width:280px}
+    .photo img{display:block;width:100%;height:auto;object-fit:cover}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:24px}
+    .project{padding:20px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.018), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column;justify-content:space-between;min-height:320px}
+    .project img{width:100%;height:140px;object-fit:cover;border-radius:10px}
+    .project h3{margin:10px 0;font-size:18px}
+
+    section h2{margin:0 0 20px 0;font-size:24px}
+
     .tags{display:flex;gap:8px;flex-wrap:wrap}
-    .tag{font-size:12px;padding:6px 8px;border-radius:999px;background:var(--glass);color:var(--muted)}
-    section h2{display:flex;align-items:center;gap:10px;margin:0 0 12px 0}
-    .about{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
-    .skills{display:flex;gap:10px;flex-wrap:wrap}
-    .skill{background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.02)}
-    footer{margin-top:36px;text-align:center;color:var(--muted);font-size:13px;padding:18px}
-    /* responsive */
-    @media (max-width:980px){.hero{grid-template-columns:1fr;}.grid{grid-template-columns:repeat(2,1fr)}.about{grid-template-columns:1fr}}
-    @media (max-width:560px){.grid{grid-template-columns:1fr}.brand .logo{width:46px;height:46px}}
-    /* small effects */
-    .socials{display:flex;gap:12px}
-    .socials a{color:var(--muted);text-decoration:none}
-    .project img{width:100%;height:140px;object-fit:cover;border-radius:8px}
-    .contact-form{display:grid;gap:12px}
-    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:8px;color:inherit}
-    textarea{min-height:110px}
-    .mini{font-size:13px;color:var(--muted)}
-    /* Floating animation */
-    .float{animation:float 6s ease-in-out infinite}
-    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+    .tag{font-size:12px;padding:6px 10px;border-radius:999px;background:var(--glass);color:var(--muted)}
+
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px}
+    .skills{display:flex;gap:12px;flex-wrap:wrap}
+    .skill{background:linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,0.04);font-size:14px}
+
+    footer{margin-top:40px;text-align:center;color:var(--muted);font-size:14px;padding:20px}
+
+    /* responsive for mobile */
+    @media (max-width:768px){
+      .hero{grid-template-columns:1fr;gap:24px}
+      .photo{max-width:220px;margin:0 auto}
+      .intro h1{font-size:24px}
+      nav a{margin-left:10px;font-size:14px}
+      .about{grid-template-columns:1fr}
+      .wrap{padding:10px}
+      .btn{width:100%}
+    }
+
+    @media (max-width:480px){
+      .intro h1{font-size:20px}
+      body{font-size:14px}
+      header{flex-direction:column;align-items:flex-start;gap:8px}
+      .logo{width:40px;height:40px;font-size:14px}
+      .photo{max-width:180px}
+      .grid{grid-template-columns:1fr}
+      .btn{font-size:14px}
+    }
   </style>
 </head>
 <body>
@@ -61,7 +83,7 @@
         <div class="logo">SK</div>
         <div>
           <div style="font-weight:700">Sushant Kumar</div>
-          <div class="mini">Computer engineerer • Problem Solver</div>
+          <div class="mini">Computer engineer • Problem Solver</div>
         </div>
       </div>
       <nav>
@@ -74,27 +96,15 @@
     <main>
       <section class="hero">
         <div class="card intro">
-          <h1>Hi — I’m <span style="color:var(--accent)">Your Name</span>.<br><span style="font-weight:600">I build logic into reality.</span></h1>
-          <p>I’m a computer engineer specializing in modern problem solvings.</p>
+          <h1>Hi — I’m <span style="color:var(--accent)">Your Name</span>.<br>I build logic into reality.</h1>
+          <p>I’m a computer engineer specializing in modern problem solving.</p>
           <div class="cta">
             <a class="btn btn-primary" href="#contact">Hire me</a>
             <a class="btn btn-ghost" href="#projects">View projects</a>
           </div>
-
-          <div style="margin-top:18px" class="mini">Quick facts</div>
-          <div style="display:flex;gap:12px;margin-top:8px">
-            <div style="background:var(--glass);padding:10px;border-radius:10px;text-align:center;flex:1">
-              <div style="font-weight:800;font-size:18px">0<div>
-              <div class="mini">Years experience</div>
-            </div>
-            <div style="background:var(--glass);padding:10px;border-radius:10px;text-align:center;flex:1">
-              <div style="font-weight:800;font-size:18px">0+</div>
-              <div class="mini">Projects</div>
-            </div>
-          </div>
         </div>
 
-        <aside class="photo float">
+        <aside class="photo">
           <img src="assets/susi.jpg" alt="portrait">
         </aside>
       </section>
@@ -103,24 +113,24 @@
         <h2>Featured projects</h2>
         <div class="grid">
           <article class="project card">
-            <img src="https://images.unsplash.com/photo-1505842465776-3d7a3bf165d3?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=7c2fb3f3c8a9c6d9e4a3b2f1" alt="project">
+            <img src="https://images.unsplash.com/photo-1505842465776-3d7a3bf165d3?q=80&w=1200&auto=format&fit=crop" alt="project">
             <h3>Riverside Community Hall</h3>
-            <p class="mini">A 5,000 sq.ft community space using a hybrid steel-concrete frame. Delivered on budget with sustainable materials and passive cooling design.</p>
-            <div class="tags" style="margin-top:12px"><span class="tag">Structural Design</span><span class="tag">Revit</span><span class="tag">Sustainability</span></div>
+            <p class="mini">A 5,000 sq.ft community space with a hybrid steel-concrete frame using sustainable materials.</p>
+            <div class="tags"><span class="tag">Structural Design</span><span class="tag">Revit</span><span class="tag">Sustainability</span></div>
           </article>
 
           <article class="project card">
-            <img src="https://images.unsplash.com/photo-1505691723518-36a8a3682b90?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=6cdf9d4d5b2f4f3a1c3e2b4f" alt="project">
+            <img src="https://images.unsplash.com/photo-1505691723518-36a8a3682b90?q=80&w=1200&auto=format&fit=crop" alt="project">
             <h3>Apartment Retrofit</h3>
-            <p class="mini">Seismic retrofit and façade upgrade for a nine-storey apartment block — improved safety and energy performance.</p>
-            <div class="tags" style="margin-top:12px"><span class="tag">Retrofit</span><span class="tag">Analysis</span><span class="tag">Project Mgmt</span></div>
+            <p class="mini">Seismic retrofit and façade upgrade improving safety and energy performance.</p>
+            <div class="tags"><span class="tag">Retrofit</span><span class="tag">Analysis</span><span class="tag">Project Mgmt</span></div>
           </article>
 
           <article class="project card">
-            <img src="https://images.unsplash.com/photo-1521302080973-3b8b1d0d7f2d?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=3a1b2c3d4e5f6a7b8c9d0e1f" alt="project">
+            <img src="https://images.unsplash.com/photo-1521302080973-3b8b1d0d7f2d?q=80&w=1200&auto=format&fit=crop" alt="project">
             <h3>School Sports Pavilion</h3>
-            <p class="mini">Lightweight truss roof system enabling a column-free span of 30m — completed in 10 months.</p>
-            <div class="tags" style="margin-top:12px"><span class="tag">Structural Analysis</span><span class="tag">Fabrication</span></div>
+            <p class="mini">Lightweight truss roof system with a column-free span of 30m.</p>
+            <div class="tags"><span class="tag">Structural Analysis</span><span class="tag">Fabrication</span></div>
           </article>
         </div>
       </section>
@@ -129,26 +139,24 @@
         <h2>About</h2>
         <div class="about">
           <div class="card">
-            <p>I’m a software engineer based in Dhanbad, Jharkhand (you can change this). I enjoy solving real-world problems — to make projects succeed.</p>
+            <p>I’m a software engineer based in Dhanbad, Jharkhand. I enjoy solving real-world problems and helping projects succeed.</p>
             <ul style="margin-top:12px;color:var(--muted)">
               <li>BTech in Computer Science Engineering</li>
-              <li>Software: VS Code, Git, Pandas, AutoCAD, Revit</li>
-              <!-- <li>Specialties: Seismic retrofit, steel-concrete hybrid systems</li> -->
+              <li>Software: VS Code, Git, AutoCAD, Revit</li>
             </ul>
           </div>
 
           <div class="card">
             <h3>Skills</h3>
-            <div class="skills" style="margin-top:10px">
-              <span class="skill">Data Structures and algorithm</span>
+            <div class="skills">
+              <span class="skill">Data Structures</span>
               <span class="skill">Web Development</span>
               <span class="skill">Databases</span>
               <span class="skill">Version Control</span>
-              <!-- <span class="skill">Construction Detailing</span> -->
             </div>
 
             <h3 style="margin-top:16px">Tools</h3>
-            <div class="skills" style="margin-top:10px">
+            <div class="skills">
               <span class="skill">Python</span>
               <span class="skill">Java</span>
               <span class="skill">C</span>
@@ -161,30 +169,25 @@
 
       <section id="contact" style="margin-top:28px">
         <h2>Contact</h2>
-        <div class="card" style="display:grid;grid-template-columns:1fr 360px;gap:18px">
+        <div class="card" style="display:grid;grid-template-columns:1fr;gap:18px">
           <div>
-            <p class="mini">Interested in working together? Send a short message — I usually reply within a few days.</p>
-            <form class="contact-form" onsubmit="event.preventDefault(); sendMessage()">
+            <p class="mini">Interested in working together? Send a message — I usually reply within a few days.</p>
+            <form class="contact-form" onsubmit="event.preventDefault(); sendMessage()" style="display:grid;gap:12px">
               <input id="name" placeholder="Your name" required />
               <input id="email" placeholder="Email" type="email" required />
               <textarea id="message" placeholder="Tell me about the project" required></textarea>
-              <div style="display:flex;gap:10px">
-                <button class="btn btn-primary" type="submit">Send message</button>
-                <a class="btn btn-ghost" href="mailto:your.email@example.com">Email me</a>
-              </div>
-              <div id="note" class="mini" style="margin-top:8px;color:var(--muted)"></div>
+              <button class="btn btn-primary" type="submit">Send message</button>
             </form>
           </div>
 
-          <aside style="padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));">
+          <aside style="margin-top:10px">
             <div style="font-weight:700">Contact Info</div>
-            <div class="mini" style="margin-top:8px">Dhanbad, Jharkhand • Open to remote work</div>
-            <div style="margin-top:12px" class="socials">
+            <div class="mini">Dhanbad, Jharkhand • Open to remote work</div>
+            <div class="socials" style="display:flex;gap:12px;margin-top:8px">
               <a href="#">LinkedIn</a>
               <a href="https://github.com/sushant-kumar-27">Github</a>
               <a href="https://instagram.com/@sushant.2111">Instagram</a>
             </div>
-            <div style="margin-top:14px" class="mini">Resume: <a href="#" style="color:var(--accent)">Download PDF</a></div>
           </aside>
         </div>
       </section>
@@ -192,7 +195,7 @@
     </main>
 
     <footer>
-      © <span id="year"></span>Sushant Kumar -- Built with ❤️ · <span class="mini">Designed for clarity and speed</span>
+      © <span id="year"></span> Sushant Kumar — Built with ❤️
     </footer>
   </div>
 
@@ -203,11 +206,9 @@
       const email = document.getElementById('email').value.trim();
       const msg = document.getElementById('message').value.trim();
       if(!name||!email||!msg) return;
-      // fallback: open mail client
       const subject = encodeURIComponent('Portfolio enquiry from ' + name);
       const body = encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\nMessage:\n'+msg);
       window.location.href = 'mailto:your.email@example.com?subject='+subject+'&body='+body;
-      document.getElementById('note').textContent = 'Opening your mail client...';
     }
   </script>
 </body>
